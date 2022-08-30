@@ -1,0 +1,17 @@
+import bs4
+import requests
+
+
+r = requests.get(searches)
+#searches is list of 100 searches for language+movies+with+english+subtitles
+
+
+page = r.text
+soup = bs4.BeautifulSoup(page, 'html.parser')
+
+vids = soup.findAll('a', attrs={'class': 'yt-uix-tile-link'})
+
+videolist = []
+for v in vids:
+    tmp = 'https://www.youtube.com' + v['href']
+    videolist.append(tmp)

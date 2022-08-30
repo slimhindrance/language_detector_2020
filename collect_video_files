@@ -1,0 +1,16 @@
+import pandas as pd
+
+
+base = "https://www.youtube.com/results?search_query="
+data = pd.read_csv("languages.csv")
+langs = data['Language ']
+languages = []
+
+for x,y in langs.iteritems():
+    languages.append(y)
+
+searches = base.join(languages) + "+movies+with+english+subtitles"
+
+print(languages)
+print(searches)
+#maybe striaght speech instead of films
